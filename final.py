@@ -1,26 +1,33 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm
+#from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from web3 import Web3
 import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'e36106119a10a327dd4fd993dfad8262'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #3 forward slashes for relative path sqlite for easy deployment of database
-db = SQLAlchemy(app)  #Create a database instance
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #3 forward slashes for relative path sqlite for easy deployment of database
+#db = SQLAlchemy(app)  #Create a database instance
 
 ganache_url = "http://127.0.0.1:7545"
 web3 = Web3(Web3.HTTPProvider(ganache_url))
 
-#def count()
+'''
+class count_a(db.Model):
+	count = db.Column(db.Integer)
 
+	def __repr__(self):
+		return "count_a {}".format(self.count)
+'''
 
 voter_1 = '0x076E4EB4B08eE2AF74A8C27ffBF9E0A4CC0c86c9'
 party_a = '0xE0aD2dD9851b60b8FE23827E6aC21018788F95EF' # BJP
 party_b = '0x998F8324a9262bFF9Cd5dba0e9679E865b7D8B32' #
 party_c = '0x4f541619F081DA24a86826980F4f75fDd40328A0'
 party_d = '0x09524678C56B9f7DeE4E8FcA3aBf6f120172c7B3'
+
+#cnt_a=cnt_b=cnt_c=cnt_d=0
+
 
 private_key='56de1bc16eb8bacf9b6f7da8422b30823bfac49d94b69303f801e0c95b66d9ad'
 
@@ -45,11 +52,6 @@ def login():
 @app.route('/voting')
 def voting():
 	return render_template('clist.html')
-
-
-
-
-
 
 
 @app.route('/partya')
@@ -85,6 +87,16 @@ def partya():
 	balance_a=web3.eth.getBalance(party_a)
 	balance_a=web3.fromWei(balance_a,'ether') #To print
 	balance_a-=100
+	#cnt_a = balance_a
+	'''
+	cnt_a = count_a(count=balance_a)
+	db.Session.add(cnt_a)
+	db.Session.commit()
+	'''
+
+	with open("a.txt", "w+") as f:
+		f.write(str(balance_a))
+
 	return render_template('party_a.html',curr_hash=curr_hash,block_no=block_no,time_stamp=time_stamp,prev_hash=prev_hash,balance_a=balance_a)
 
 
@@ -125,6 +137,11 @@ def partyb():
 	balance_b=web3.eth.getBalance(party_b)
 	balance_b=web3.fromWei(balance_b,'ether') #To print
 	balance_b-=100
+
+	with open("b.txt", "w+") as f:
+		f.write(str(balance_b))
+
+	#cnt_b = balance_b
 	return render_template('party_b.html',curr_hash=curr_hash,block_no=block_no,time_stamp=time_stamp,prev_hash=prev_hash,balance_b=balance_b)
 
 
@@ -163,6 +180,9 @@ def partyc():
 	balance_c=web3.eth.getBalance(party_c)
 	balance_c=web3.fromWei(balance_c,'ether') #To print
 	balance_c-=100
+	#cnt_c = balance_c
+	with open("c.txt", "w+") as f:
+		f.write(str(balance_c))
 	return render_template('party_c.html',curr_hash=curr_hash,block_no=block_no,time_stamp=time_stamp,prev_hash=prev_hash,balance_c=balance_c)
 
 
@@ -204,9 +224,27 @@ def partyd():
 	balance_d=web3.eth.getBalance(party_d)
 	balance_d=web3.fromWei(balance_d,'ether') #To print
 	balance_d-=100
+	#cnt_d=balance_d
+	with open("d.txt", "w+") as f:
+		f.write(str(balance_d))
 	return render_template('party_d.html',curr_hash=curr_hash,block_no=block_no,time_stamp=time_stamp,prev_hash=prev_hash,balance_d=balance_d)
 
 
+@app.route('/results')
+def res():
+	with open("a.txt", "r") as f:
+		cnt_a = f.readline() 
+		cnt_a = int(cnt_a)
+	with open("b.txt", "r") as f:
+		cnt_b = f.readline() 
+		cnt_b = int(cnt_b)
+	with open("c.txt", "r") as f:
+		cnt_c = f.readline() 
+		cnt_c = int(cnt_c)
+	with open("d.txt", "r") as f:
+		cnt_d = f.readline() 
+		cnt_d = int(cnt_d)
+	return render_template('results.html', cnt_a=cnt_a, cnt_b=cnt_b, cnt_c=cnt_c, cnt_d=cnt_d)
 
 
 if __name__ == '__main__':
