@@ -65,7 +65,8 @@ python3 final.py
 
 4. The flask application will be running on the local server. Open the browser and the application will be running on localhost:5000/. Port number for flask is 5000.
 
-
+### Note
+blockchain.py is a python script by us for understanding how blockchain works on ethereum using ganache. Parts of this has been used in final.py at various code blocks.  
 
 
 
