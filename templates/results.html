@@ -19,6 +19,7 @@
       }
       man {
           height: 200px;
+
         }
     main {
     	flex: 1 0 auto;
@@ -52,54 +53,37 @@
 			</div>
         </nav>
     </man>
-		<body>
-			<center>
-			 <table style="width:80%">
+    <center>
+     <table style="width:60%">
   				<tr>
-    				<th>Block Number</th>
-    				<th>Timestamp</th>
-    				<th>Transaction Hash</th>
-    				<th>Previous Hash</th>
+    				<th>Party Name</th>
+    				<th>Number of Votes</th>
   				</tr>
   				<tr>
-    				<td>{{block_no}}</td>
-    				<td>{{time_stamp}}</td>
-    				<td>{{curr_hash}}</td>
-    				<td>{{prev_hash}}</td>
+    				<td>Bhartiya Janta Party</td>
+    				<td>{{cnt_a}}</td>
+  				</tr>
+  				<tr>
+    				<td>Congress</td>
+    				<td>{{cnt_b}}</td>
+  				</tr>
+  				<tr>
+    				<td>Nationalist Congress Party</td>
+    				<td>{{cnt_c}}</td>
+  				</tr>
+  				<tr>
+    				<td>Shiv Sena</td>
+    				<td>{{cnt_d}}</td>
   				</tr>
 			 </table>
-			</center>
-			<br/><br/>
-			<!--
-			<center>
-			<table style="width:60%">
-				<tr>
-					<th>Party Name</th>
-					<th>Number of Votes</th>
-				</tr>
-				<tr>
-					<td>BJP</td>
-					<td>{{balance_a}}</td>
-				</tr>
-				<tr>
-					<td>Congress</td>
-					<td>{{balance_b}}</td>
-				</tr>
-				<tr>
-					<td>Nationalist Congress Party</td>
-					<td>{{balance_c}}</td>
-				</tr>
-				<tr>
-					<td>Shiv Sena</td>
-					<td>{{balance_d}}</td>
-				</tr>
-			</table>
-		</center>
-	-->
-			<br/><br/><br/>
-			<center>
-			<a href = "http://localhost:5000/results">See live results</a>
-			</center>
+			</center>	
+
+      <br/><br/><br/>
+      <center>
+      <a href = "http://localhost:5000/">New voter?</a>
+      </center>
+      		
 	</body>
+	
 	{% endblock %}
 </html>
