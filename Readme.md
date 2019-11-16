@@ -68,7 +68,13 @@ python3 final.py
 ### Note
 blockchain.py is a python script by us for understanding how blockchain works on ethereum using ganache. Parts of this has been used in final.py at various code blocks.  
 
+## Future Scope
 
+Authentication using biometric linked to aadhaar number.
+
+BigChain DB for more secure data querying and other database transactions.
+
+Hyperledger instead of ethereum because its more secure.
 
 
 
