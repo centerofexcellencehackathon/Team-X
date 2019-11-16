@@ -44,6 +44,29 @@ Download link : https://www.trufflesuite.com/ganache
 
 Installation guide : https://www.codeooze.com/blockchain/ethereum-dev-environment-2019/
 
+#### Steps to run our code
+1. Git clone this repository using the command :
+```
+git clone https://github.com/centerofexcellencehackathon/Team-X
+```
+
+2. It will be saved in the directory vote. Change directory using 
+```
+cd vote
+```
+
+3. Open another terminal prompt. Change directory to the location where ganache was downloaded. Execute ganache application using the above installation guide before deploying the flask application.  
+
+
+4. Run the flask application by executing final.py script.
+```
+python3 final.py
+```
+
+4. The flask application will be running on the local server. Open the browser and the application will be running on localhost:5000/. Port number for flask is 5000.
+
+
+
 
 
 
