@@ -29,4 +29,23 @@ Current voting systems often take time to collate and process answers. Often whe
 
 ### Implementation of Blockchain
 
+##### Installation of used libraries (on Ubuntu)
+
+~~~
+pip3 install flask
+pip3 install web3
+pip3 install SQLAlchemy (for authentication and database handling, though we weren't able to implement)
+~~~
+
+#### Installation of ganache
+Ganache is a personal blockchain for Ethereum development you can use to deploy contracts, develop your applications, and run tests. We used ganache to simulate public and private keys in our ethereum based blockchain application. We used ethereum blockchain because it supports smart contracts.
+
+Download link : https://www.trufflesuite.com/ganache
+
+Installation guide : https://www.codeooze.com/blockchain/ethereum-dev-environment-2019/
+
+
+
+
+
 
